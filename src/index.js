@@ -74,9 +74,7 @@ io.on('connection', (socket) =>{
 		const user = getUser(socket.id)
 		const long = location.longitude
 		const lat = location.latitude
-		//io.emit('message', `https://www.google.com/maps?q=${long},${lat}`) 
 		io.to(user.room).emit('locationMessage', generateLocationMessages(user.username, `https://www.google.com/maps?q=${long},${lat}`))
-		// https://www.google.com/maps?q=lat,long
 		callback()
 	})
 
@@ -85,12 +83,4 @@ io.on('connection', (socket) =>{
 server.listen(port, () =>{
 	console.log(`Server is listening on port: ${port}`)
 })
-
-
-
-
-
-
-
-
 
